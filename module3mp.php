@@ -20,25 +20,47 @@
         <?php
         if(isset($_POST['name'])){
             date_default_timezone_set('Asia/Manila');
+            $hour = date("H");
+            $day = date("D");
+            
+            
             echo $_POST['name'];
             echo date("H") . "-----"; 
             echo date("i");
+            if ($hour >= 6 &&  $hour < 12){
+                $greeting = "Good Morning, ";
+            } else if ($hour >=12 && $hour < 18){
+                $greeting = "Good Afternoon, ";
+            } else {
+                $greeting = "Good Evening, ";
+            }
             
-//            $message = <<< PARA2
-//                asdfd
-//            PARA2;
-            //echo time();
-        }
-        ?>
-      <div class="row">
+            switch($day)
+            {
+                case "Sun": $fday = "Sunday"; $planet = Sun; $colour = red; break;
+                case "Mon": $fday = "Monday"; $planet = Moon;  $colour = yellow; break;
+                case "Tue": $fday = "Tuesday"; $planet = Mars;  $colour = pink; break;
+                case "Wed": $fday = "Wednesday"; $planet = Mercury; $colour = green;  break;
+                case "Thu": $fday = "Thursday"; $planet = Jupiter; $colour = orange;  break;
+                case "Fri": $fday = "Friday"; $planet = Venus;  $colour = blue; break;
+                case "Sat": $fday = "Saturday"; $planet = Saturn;  $colour = purple; break;
+            } 
+            
+            $message = <<< PARA1
+                 <div class="row">
       <div class="col s12 m5">
-        <div class="card-panel teal">
-          <span class="white-text">I am a very simple card. I am good at containing small bits of information.
-          I am convenient because I require little markup to use effectively. I am similar to what is called a panel in other frameworks.
+        <div class="card-panel $colour">
+          <span class="white-text">$greeting $name, today is $day taken from the planet $planet and the color of the day is $colour :O 
           </span>
         </div>
       </div>
     </div>
+            PARA1;
+            echo $message;
+            echo time();
+        }
+        ?>
+     
           <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
           <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
     </body>
