@@ -19,9 +19,11 @@
         </form>
         <?php
         if(isset($_POST['name'])){
+            date_default_timezone_set('Asia/Manila');
             echo $_POST['name'];
             echo date("H") . "-----"; 
             echo date("i");
+            
 //            $message = <<< PARA2
 //                asdfd
 //            PARA2;
