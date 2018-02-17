@@ -1,10 +1,8 @@
 <?php 
-//    if (isset($_POST['name'])){
-//        $name = $_POST['name'];
-//    } else {$name='';}
+    $ishide = '';
     isset($_POST['name'])? $name = $_POST['name'] : $name='';
     isset($_POST['amt'])? $amt = $_POST['amt'] : $amt='';
-    isset($_POST['freq'])? $freq = $_POST['freq'] : $freq='';
+    isset($_POST['freq'])? $freq = $_POST['freq'] : $ishide='hidden';
 ?>
 <html>
     <head>
@@ -43,12 +41,12 @@
             <button type="submit" class="waves-effect waves-light btn">Submit</button>
         </form>
            
-             <div class="row">
+    <div class="row" <?php echo $ishide;?>>
         <div class="col s12 m8 push-m2 l6">
           <div class="card darken-1">
             <div class="card-content">
-              <span class="card-title">Card Title</span>
-                <p> Hello <?php echo $name;?>!!</p>
+              <span class="card-title">Hello <?php echo $name;?>!!</span>
+            
                 <p>Your <?php echo $freq;?> Peso Sense Savings Goal is:</p>
                 <p>
                      <table class=" centered highlight">
@@ -64,14 +62,14 @@
                                 case "Monthly": $freqnum = 12; break;
                             }
                             
-                            for($i=0;$i<=$freqnum;$i++){
+                            for($i=1;$i<=$freqnum;$i++){
                                 $savings = $i * $amt;
                                 echo "<tr>
                                         <td>$i</td>
                                         <td>$amt</td>
                                         <td>$savings</td>
                                       </tr>";
-                                $i++;
+                               
                             }
                          ?>
                     </table>
@@ -85,27 +83,7 @@
            
                 
           
-           <?php 
-            if(isset($_POST['name'])){
-                if(isset($_POST['amt'])){
-                    if(isset($_POST['freq'])){
-                        
-//                         $message = <<< PARA1
-//                 <div class="row">
-//      <div class="col s12 m5">
-//        <div class="card-panel $colour">
-//          <span class="white-text">$greeting $name, today is $day taken from the planet $planet and the color of the day is $colour :O 
-//          </span>
-//        </div>
-//      </div>
-//    </div>
-//            PARA1;
-                        
-                } else{}
-                } else{}
-            }else{}
-           
-           ?>
+        
         
        </div>
      
