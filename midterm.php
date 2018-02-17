@@ -3,8 +3,8 @@
 //        $name = $_POST['name'];
 //    } else {$name='';}
     isset($_POST['name'])? $name = $_POST['name'] : $name='';
-    isset($_POST['amt'])? $name = $_POST['amt'] : $amt='';
-    isset($_POST['freq'])? $name = $_POST['freq'] : $freq='';
+    isset($_POST['amt'])? $amt = $_POST['amt'] : $amt='';
+    isset($_POST['freq'])? $freq = $_POST['freq'] : $freq='';
 ?>
 <html>
     <head>
@@ -27,37 +27,79 @@
             <p><label for="amt">Enter Savings Amount</label>
                 <input id="amt" placeholder="500" type="number" name="amt" value="<?php echo $amt; ?>">
               </p>
+            <p><label>Choose the frequency of savings</label></p>
             <p>
-              <input name="freq" type="radio" id="fD" />
+              <input name="freq" type="radio" id="fD" value="Daily"/>
               <label for="fD">Daily</label>
             </p>
             <p>
-              <input name="freq" type="radio" id="fW" />
+              <input name="freq" type="radio" id="fW" value="Weekly"/>
               <label for="fW">Weekly</label>
             </p>
             <p>
-              <input name="freq" type="radio" id="fM" />
+              <input name="freq" type="radio" id="fM" value="Monthly"/>
               <label for="fM">Monthly</label>
             </p>
             <button type="submit" class="waves-effect waves-light btn">Submit</button>
         </form>
-           <table class="responsive-table centered highlight">
            
-           </table>
+             <div class="row">
+        <div class="col s12 m8 push-m2 l6">
+          <div class="card darken-1">
+            <div class="card-content">
+              <span class="card-title">Card Title</span>
+                <p> Hello <?php echo $name;?>!!</p>
+                <p>Your <?php echo $freq;?> Peso Sense Savings Goal is:</p>
+                <p>
+                     <table class=" centered highlight">
+                        <tr>
+                            <th><?php echo $freq;?></th>
+                            <th>Amount</th>
+                            <th>Savings</th>
+                         </tr>
+                         <?php 
+                            switch($freq){
+                                case "Daily": $freqnum = 365; break;
+                                case "Weekly": $freqnum = 52; break;
+                                case "Monthly": $freqnum = 12; break;
+                            }
+                            
+                            for($i=0;$i<=$freqnum;$i++){
+                                $savings = $i * $amt;
+                                echo "<tr>
+                                        <td>$i</td>
+                                        <td>$amt</td>
+                                        <td>$savings</td>
+                                      </tr>";
+                                $i++;
+                            }
+                         ?>
+                    </table>
+                </p>
+              <p class="right-align">Savings in 1 year: <?php echo $amt * $freqnum;?></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+           
+                
+          
            <?php 
             if(isset($_POST['name'])){
                 if(isset($_POST['amt'])){
                     if(isset($_POST['freq'])){
-                         $message = <<< PARA1
-                 <div class="row">
-      <div class="col s12 m5">
-        <div class="card-panel $colour">
-          <span class="white-text">$greeting $name, today is $day taken from the planet $planet and the color of the day is $colour :O 
-          </span>
-        </div>
-      </div>
-    </div>
-            PARA1;
+                        
+//                         $message = <<< PARA1
+//                 <div class="row">
+//      <div class="col s12 m5">
+//        <div class="card-panel $colour">
+//          <span class="white-text">$greeting $name, today is $day taken from the planet $planet and the color of the day is $colour :O 
+//          </span>
+//        </div>
+//      </div>
+//    </div>
+//            PARA1;
                         
                 } else{}
                 } else{}
