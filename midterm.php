@@ -40,7 +40,6 @@
             </p>
             <button type="submit" class="waves-effect waves-light btn">Submit</button>
         </form>
-           
     <div class="row" <?php echo $ishide;?>>
         <div class="col s12 m8 push-m2 l6">
           <div class="card darken-1">
